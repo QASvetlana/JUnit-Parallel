@@ -1,6 +1,7 @@
 package ru.sandreeva.page;
 
 import com.codeborne.selenide.*;
+import ru.sandreeva.domain.MenuItem;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
@@ -15,4 +16,10 @@ public class YandexResultsPage {
                 .shouldHave(Condition.text(expected));
     }
 
+    public YandexResultsPage switchToMenuItem(MenuItem menuItem) {
+        $$("li[role='listitem']").find(Condition.text(menuItem.getDesc())).click();
+        return this;
+
+    }
 }
+
